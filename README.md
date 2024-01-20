@@ -18,3 +18,7 @@ This is what we used for the MarkdownEditor, it also has spell checking by defau
 ### Prisma
 
 When using prisma, we don't have to specifically define types after we have created a migration, their types are automatically generated. an example of where the prisma type was used is in the components/IssueStatusBadge.tsx Props interface `status`
+
+### delay
+
+delay is used to simulate a slow server in order to properly test the loading skeleton.
