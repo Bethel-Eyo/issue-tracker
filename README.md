@@ -14,3 +14,7 @@ It is also important to note that radix-ui overrides the default font so we have
 ### SimpleMDE
 
 This is what we used for the MarkdownEditor, it also has spell checking by default and has lots of customisations. https://www.npmjs.com/package/react-simplemde-editor
+
+### Prisma
+
+When using prisma, we don't have to specifically define types after we have created a migration, their types are automatically generated. an example of where the prisma type was used is in the components/IssueStatusBadge.tsx Props interface `status`
