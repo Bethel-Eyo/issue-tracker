@@ -30,7 +30,7 @@ const IssuesPage = async () => {
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                <Link href={`/issues/${issue.id}`}>{issue.title} </Link>
+                <Link href={`/issues/${issue.id}`} name={issue.title} />
                 {/* to hide on medium sized devices and make visible on only mobile*/}
                 <div className="block md:hidden">
                   <IssueStatusBadge status={issue.status} />
