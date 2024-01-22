@@ -22,3 +22,7 @@ When using prisma, we don't have to specifically define types after we have crea
 ### delay
 
 delay is used to simulate a slow server in order to properly test the loading skeleton.
+
+### Link(s)
+
+The Link component from `next/link` is the most ideal for client-side navigation without reloading the page, the Link component from Radix UI gives a full page reload, but its advantage is that it provides the Link style that the general them of the project uses thereby providing consistency across board. Hence the need to develop a custom Link component that uses both.
