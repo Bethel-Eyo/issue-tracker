@@ -1,4 +1,4 @@
-import { Button, Table } from "@radix-ui/themes";
+import { Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import prisma from "@/prisma/client";
@@ -30,7 +30,7 @@ const IssuesPage = async () => {
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                {issue.title}{" "}
+                <Link href={`/issues/${issue.id}`}>{issue.title} </Link>
                 {/* to hide on medium sized devices and make visible on only mobile*/}
                 <div className="block md:hidden">
                   <IssueStatusBadge status={issue.status} />
