@@ -30,3 +30,5 @@ The Link component from `next/link` is the most ideal for client-side navigation
 #### Single Responsibility Principle
 
 refer to app/issues/[id]/page.tsx to see how Single Responsibility Principle is implemented, where the page.tsx file is just reponsible for the layout and the IssueDetails.tsx and EditIssueButton.tsx are abstracted for their respective responsibilities.
+
+Note: we use \_ before \_components to remove the folder out of our routing system for folders we don't want to be in our routing system, so even if we use page.tsx in it, nextjs won't add it to our routing system.
