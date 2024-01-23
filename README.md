@@ -26,3 +26,7 @@ delay is used to simulate a slow server in order to properly test the loading sk
 ### Link(s)
 
 The Link component from `next/link` is the most ideal for client-side navigation without reloading the page, the Link component from Radix UI gives a full page reload, but its advantage is that it provides the Link style that the general them of the project uses thereby providing consistency across board. Hence the need to develop a custom Link component that uses both.
+
+#### Single Responsibility Principle
+
+refer to app/issues/[id]/page.tsx to see how Single Responsibility Principle is implemented, where the page.tsx file is just reponsible for the layout and the IssueDetails.tsx and EditIssueButton.tsx are abstracted for their respective responsibilities.
