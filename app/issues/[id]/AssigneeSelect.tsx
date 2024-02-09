@@ -1,10 +1,10 @@
 "use client";
+import { Skeleton } from "@/app/components";
 import { Issue, User } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Skeleton } from "@/app/components";
+import toast, { Toaster } from "react-hot-toast";
 
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   const {
@@ -21,27 +21,35 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   if (isLoading) return <Skeleton />;
   if (error) return null;
   return (
-    <Select.Root
-      defaultValue={issue.assignedToUserId || ""}
-      onValueChange={(userId) => {
-        axios.patch("/api/issues/" + issue.id, {
-          assignedToUserId: userId === "Unassigned" ? null : userId,
-        });
-      }}
-    >
-      <Select.Trigger placeholder="Assign..." />
-      <Select.Content>
-        <Select.Group>
-          <Select.Label>Suggestions</Select.Label>
-          <Select.Item value="Unassigned">Unassigned</Select.Item>
-          {users?.map((user, index) => (
-            <Select.Item key={index} value={user.id}>
-              {user.name}
-            </Select.Item>
-          ))}
-        </Select.Group>
-      </Select.Content>
-    </Select.Root>
+    <>
+      <Select.Root
+        defaultValue={issue.assignedToUserId || ""}
+        onValueChange={(userId) => {
+          axios
+            .patch("oma/xapi/issues/" + issue.id, {
+              assignedToUserId: userId === "Unassigned" ? null : userId,
+            })
+            .catch(() => {
+              console.log("entered the catch block");
+              toast.error("Changes could not be saved");
+            });
+        }}
+      >
+        <Select.Trigger placeholder="Assign..." />
+        <Select.Content>
+          <Select.Group>
+            <Select.Label>Suggestions</Select.Label>
+            <Select.Item value="Unassigned">Unassigned</Select.Item>
+            {users?.map((user, index) => (
+              <Select.Item key={index} value={user.id}>
+                {user.name}
+              </Select.Item>
+            ))}
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
+      <Toaster />
+    </>
   );
 };
 
